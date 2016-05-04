@@ -116,6 +116,9 @@ class STDPMechanism(StandardSynapseType):
         self.weight = weight
         self.delay = delay or self._get_minimum_delay()
         self._build_translations()
+        # CAll the ancestor init only with the weight and delay... Other parameters might not be needed.
+        super(STDPMechanism,self).__init__(weight=weight, delay=delay)
+        
         
     def _build_translations(self):
         self.translations = self.__class__.base_translations  # weight and delay
